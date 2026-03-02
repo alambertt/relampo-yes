@@ -1,0 +1,711 @@
+scenarios:
+  - name: recorded_session
+    profile:
+      concurrency: 1
+      duration: 30s
+      iterations: 1
+      ramp_up: 10s
+      startup_delay: 0s
+    cookie_manager:
+      enabled: true
+      cookies: []
+    requests:
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: testingyes.com
+        method: GET
+        name: 01_GET_testingyes.com
+        path: /demo
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: testingyes.com
+        method: GET
+        name: 02_GET_testingyes.com
+        path: /demo/
+        protocol: http
+        extractors:
+          - type: regex
+            var: token
+            pattern: securityToken = '(.+?)';
+            template: $1$
+            match_no: '0'
+            default: NOT_FOUND
+        timers:
+          - type: constant_timer
+            delay: '1000'
+        assertions:
+          - type: response_code
+            expected: '200'
+      - body: ''
+        headers:
+          Accept: text/css,*/*;q=0.1
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 03_GET_www.testingyes.com
+        path: /demo/includes/templates/responsive_classic/css/stylesheet.css
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/css,*/*;q=0.1
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 04_GET_www.testingyes.com
+        path: /demo/includes/templates/responsive_classic/css/stylesheet_colors.css
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/css,*/*;q=0.1
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 05_GET_www.testingyes.com
+        path: /demo/includes/templates/responsive_classic/css/responsive_default.css
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/css,*/*;q=0.1
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 06_GET_www.testingyes.com
+        path: /demo/includes/templates/responsive_classic/css/responsive.css
+        protocol: http
+      - body: ''
+        headers:
+          Accept: '*/*'
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 07_GET_www.testingyes.com
+        path: >-
+          /demo/includes/templates/responsive_classic/jscript/jscript_matchHeight-min.js
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/css,*/*;q=0.1
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 08_GET_www.testingyes.com
+        path: >-
+          /demo/includes/templates/responsive_classic/css/stylesheet_css_buttons.css
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 09_GET_www.testingyes.com
+        path: /demo/images/tomate.jpg
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 10_GET_www.testingyes.com
+        path: /demo/images/bread.jpg
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 11_GET_www.testingyes.com
+        path: /demo/images/avocado1.jpg
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 12_GET_www.testingyes.com
+        path: /demo/images/short.jpg
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 13_GET_www.testingyes.com
+        path: /demo/images/dress.jpg
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/css,*/*;q=0.1
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=4
+          Referer: http://testingyes.com/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 14_GET_www.testingyes.com
+        path: /demo/includes/templates/responsive_classic/css/print_stylesheet.css
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=6
+          Referer: http://testingyes.com/demo/
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: testingyes.com
+        method: GET
+        name: 15_GET_testingyes.com
+        path: /favicon.ico
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://testingyes.com/
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 16_GET_www.testingyes.com
+        path: /demo/index.php?main_page=login
+        protocol: http
+      - body: >-
+          securityToken=${token}&email_address=test1%40testingyes.com&password=test12345&securityToken=${token}
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Content-Length: '149'
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://www.testingyes.com
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=login
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: POST
+        name: 17_POST_www.testingyes.com
+        path: /demo/index.php?main_page=login&action=process
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=login
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 18_GET_www.testingyes.com
+        path: /demo/index.php?main_page=index
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=index
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 19_GET_www.testingyes.com
+        path: /demo/index.php?main_page=product_info&cPath=2&products_id=1
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=product_info&cPath=2&products_id=1
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 20_GET_www.testingyes.com
+        path: /demo/includes/templates/template_default/images/box_write_review.gif
+        protocol: http
+      - body: ''
+        headers:
+          Accept: '*/*'
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=product_info&cPath=2&products_id=1
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 21_GET_www.testingyes.com
+        path: /demo/includes/modules/pages/product_info/jscript_textarea_counter.js
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=product_info&cPath=2&products_id=1
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 22_GET_www.testingyes.com
+        path: >-
+          /demo/includes/templates/template_default/images/box_products_notifications_remove.gif
+        protocol: http
+      - body: "------geckoformboundarye56ddc85e9104ee91f07be25af2928a8\r\nContent-Disposition: form-data; name=\"securityToken\"\r\n\r\n9db331991ba22be92da16e8e05698a80\r\n------geckoformboundarye56ddc85e9104ee91f07be25af2928a8\r\nContent-Disposition: form-data; name=\"cart_quantity\"\r\n\r\n1\r\n------geckoformboundarye56ddc85e9104ee91f07be25af2928a8\r\nContent-Disposition: form-data; name=\"products_id\"\r\n\r\n1\r\n------geckoformboundarye56ddc85e9104ee91f07be25af2928a8--\r\n"
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Content-Length: '436'
+          Content-Type: >-
+            multipart/form-data;
+            boundary=----geckoformboundarye56ddc85e9104ee91f07be25af2928a8
+          Origin: http://www.testingyes.com
+          Priority: u=0, i
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=product_info&cPath=2&products_id=1
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: POST
+        name: 23_POST_www.testingyes.com
+        path: >-
+          /demo/index.php?main_page=product_info&cPath=2&products_id=1&action=add_product
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=product_info&cPath=2&products_id=1
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 24_GET_www.testingyes.com
+        path: /demo/index.php?main_page=shopping_cart
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=shopping_cart
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 25_GET_www.testingyes.com
+        path: >-
+          /demo/includes/templates/responsive_classic/images/icons/small_delete.png
+        protocol: http
+      - body: ''
+        headers:
+          Accept: '*/*'
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          If-Modified-Since: Wed, 17 Jul 2019 00:18:58 GMT
+          Priority: u=2
+          Referer: http://www.testingyes.com/demo/index.php?main_page=shopping_cart
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 26_GET_www.testingyes.com
+        path: /demo/includes/general.js
+        protocol: http
+      - body: ''
+        headers:
+          Accept: >-
+            image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=5, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=shopping_cart
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 27_GET_www.testingyes.com
+        path: >-
+          /demo/includes/templates/responsive_classic/buttons/english/button_update_cart.png
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=shopping_cart
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 28_GET_www.testingyes.com
+        path: /demo/index.php?main_page=checkout_shipping
+        protocol: http
+      - body: >-
+          securityToken=9db331991ba22be92da16e8e05698a80&action=process&shipping=item_item&comments=
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Content-Length: '90'
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://www.testingyes.com
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=checkout_shipping
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: POST
+        name: 29_POST_www.testingyes.com
+        path: /demo/index.php?main_page=checkout_shipping
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=checkout_shipping
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 30_GET_www.testingyes.com
+        path: /demo/index.php?main_page=checkout_payment
+        protocol: http
+      - body: >-
+          securityToken=9db331991ba22be92da16e8e05698a80&action=submit&dc_redeem_code=&payment=moneyorder&comments=
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Content-Length: '105'
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://www.testingyes.com
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=checkout_payment
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: POST
+        name: 31_POST_www.testingyes.com
+        path: /demo/index.php?main_page=checkout_confirmation
+        protocol: http
+      - body: securityToken=9db331991ba22be92da16e8e05698a80
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Content-Length: '46'
+          Content-Type: application/x-www-form-urlencoded
+          Origin: http://www.testingyes.com
+          Priority: u=0, i
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=checkout_confirmation
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: POST
+        name: 32_POST_www.testingyes.com
+        path: /demo/index.php?main_page=checkout_process
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: >-
+            http://www.testingyes.com/demo/index.php?main_page=checkout_confirmation
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 33_GET_www.testingyes.com
+        path: /demo/index.php?main_page=checkout_success
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=checkout_success
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 34_GET_www.testingyes.com
+        path: /demo/index.php?main_page=logoff
+        protocol: http
+      - body: ''
+        headers:
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Encoding: gzip, deflate
+          Accept-Language: en-US,en;q=0.5
+          Connection: keep-alive
+          Priority: u=0, i
+          Referer: http://www.testingyes.com/demo/index.php?main_page=checkout_success
+          Upgrade-Insecure-Requests: '1'
+          User-Agent: >-
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0)
+            Gecko/20100101 Firefox/145.0
+        host: www.testingyes.com
+        method: GET
+        name: 35_GET_www.testingyes.com
+        path: /demo/index.php?main_page=logoff
+        protocol: http
+    controllers:
+      - id: ctrl-1763519231298-733
+        type: simple
+        name: Simple Controller
+        children:
+          - request: 0
+      - id: ctrl-1763519234027-272
+        type: if
+        name: IF Controller
+        children:
+          - request: 1
+        condition: ${var} == true
+      - id: ctrl-1763519235668-384
+        type: while
+        name: WHILE Controller
+        children:
+          - request: 2
+        condition: ${counter} < 10
+      - id: ctrl-1763519242948-543
+        type: loop
+        name: Loop Controller
+        children:
+          - request: 3
+        loops: 2
+    flow:
+      - controller: ctrl-1763519231298-733
+      - controller: ctrl-1763519234027-272
+      - controller: ctrl-1763519235668-384
+      - controller: ctrl-1763519242948-543
+      - request: 4
+      - request: 5
+      - request: 6
+      - request: 7
+      - request: 8
+      - request: 9
+      - request: 10
+      - request: 11
+      - request: 12
+      - request: 13
+      - request: 14
+      - request: 15
+      - request: 16
+      - request: 17
+      - request: 18
+      - request: 19
+      - request: 20
+      - request: 21
+      - request: 22
+      - request: 23
+      - request: 24
+      - request: 25
+      - request: 26
+      - request: 27
+      - request: 28
+      - request: 29
+      - request: 30
+      - request: 31
+      - request: 32
+      - request: 33
+      - request: 34
