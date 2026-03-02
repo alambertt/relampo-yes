@@ -7,6 +7,7 @@ jobs:
   run-nodes:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         node: [1, 2, 3, 4, 5]
 
@@ -38,8 +39,12 @@ jobs:
         run: |
           echo "🏁 Starting node ${{ matrix.node }} of 5"
           VUS_FLAG=""
-          if [ -n "" ]; then
-            VUS_FLAG="--vus "
+          if [ -n "200" ]; then
+            if relampo-worker --help 2>&1 | grep -q -- "--vus"; then
+              VUS_FLAG="--vus 200"
+            else
+              echo "⚠️ relampo-worker does not support --vus yet; continuing without VU distribution flag."
+            fi
           fi
           relampo-worker --yaml "scenarios/done.yaml" --node ${{ matrix.node }} --total 5 $VUS_FLAG
 
