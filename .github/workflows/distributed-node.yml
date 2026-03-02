@@ -38,8 +38,8 @@ jobs:
         run: |
           echo "🏁 Starting node ${{ matrix.node }} of 5"
           VUS_FLAG=""
-          if [ -n "200" ]; then
-            VUS_FLAG="--vus 200"
+          if [ -n "" ]; then
+            VUS_FLAG="--vus "
           fi
           relampo-worker --yaml "scenarios/done.yaml" --node ${{ matrix.node }} --total 5 $VUS_FLAG
 
