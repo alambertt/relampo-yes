@@ -38,15 +38,17 @@ jobs:
       - name: Run worker node
         run: |
           echo "🏁 Starting node ${{ matrix.node }} of 5"
+          SCENARIO_PATH='scenarios/done.yaml'
           VUS_FLAG=""
           if [ -n "200" ]; then
-            if relampo-worker --help 2>&1 | grep -q -- "--vus"; then
-              VUS_FLAG="--vus 200"
-            else
-              echo "⚠️ relampo-worker does not support --vus yet; continuing without VU distribution flag."
+            if ! relampo-worker --help 2>&1 | grep -q -- "--vus"; then
+              echo "❌ --vus was requested but the released relampo-worker does not support it yet."
+              echo "   Publish a new relampo-worker release and update dl.relampo.com/relampo/latest.txt."
+              exit 1
             fi
+            VUS_FLAG="--vus 200"
           fi
-          relampo-worker --yaml "scenarios/done.yaml" --node ${{ matrix.node }} --total 5 $VUS_FLAG
+          relampo-worker --yaml "$SCENARIO_PATH" --node ${{ matrix.node }} --total 5 $VUS_FLAG
 
       - name: Upload logs/artifacts
         if: always()
