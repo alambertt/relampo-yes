@@ -38,7 +38,7 @@ jobs:
       - name: Run worker node
         run: |
           echo "🏁 Starting node ${{ matrix.node }} of 5"
-          SCENARIO_PATH='scenarios/done.yaml'
+          SCENARIO_PATH='scenarios/response_comprimidas.yaml'
           VUS_FLAG=""
           if [ -n "200" ]; then
             VUS_FLAG="--vus 200"
